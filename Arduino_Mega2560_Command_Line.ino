@@ -43,23 +43,19 @@ void lame_dump(uint8_t *p, int len)
   }
 }
 
+String ser_data; // Uninitialized String object
 
 void loop() {
   // Wait for a string from the Arduino "Serial Monitor"
   while(!Serial.available()){}; // spin until more serial data is available
 
-  String ser_data = Serial.readString(); // read in an entire string (or timeout) into String object..
+  ser_data = Serial.readString(); // read in an entire string (or timeout) into String object..
   char * buffer = ser_data.c_str();
 
   //printf("String: \"%s\"\n",buffer);
   cl_process_buffer(buffer);
 
-  printf(">"); // command prompt
-
-  // Although "flush" is used in all other programming languages as clearing buffers, Arduino doesn't clear the buffers.
-  // Arduino's "flush" waits for input data to time-out
-  Serial.flush();
-  Serial.readString(); // read in the string, thus emptying the buffer
+  printf(">"); // command prompt for next line
 
 }
 
