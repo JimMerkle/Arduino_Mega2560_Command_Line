@@ -4,8 +4,7 @@
 // Use Arduino's "Serial Monitor" or Teraterm with local echo
 //
 // Notes:
-// The serial input appears slow.  The may be due to Serial.readString() waiting for timeout.
-// Try setting a timeout first
+//
 #include <Wire.h>
 #include "command_line.h"
 
